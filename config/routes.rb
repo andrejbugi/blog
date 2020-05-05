@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   # get 'articles/index'
   get '/articles', to: 'articles#index'
+  post '/articles', to: 'articles#create'
   get '/articles/new', to: 'articles#new', as: :new_article
   get '/articles/:id', to: 'articles#show', as: :article
 
