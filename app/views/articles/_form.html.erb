@@ -1,16 +1,23 @@
 
-<% if article.errors.any? %>
-<div id="error_explanation">
-  <h2>
-    <%= pluralize(article.errors.count, "error") %> prohibited this article from being saved:
-  </h2>
-  <ul>
-    <% article.errors.full_messages.each do |msg| %>
-      <li><%= msg %></li>
-  <% end %>
-  </ul>
+<div class="container">
+  <div class="columns is-multiline">
+    <% if article.errors.any? %>
+      <div class="column is-6 is-offset-3">
+        <article class="message is-danger">
+          <div class="message-body">
+            <p><%= pluralize(article.errors.count, "error") %> prohibited this article from being saved:</p>
+            <br>
+            <p>
+            <% article.errors.full_messages.each do |msg| %>
+              <li><%= msg %></li>
+            <% end %>
+            </p>
+          </div>
+        </article>
+      </div>
+    <% end %>
+  </div>
 </div>
-<% end %>
 
 <div class="container">
   <div class="columns is-multiline">
@@ -28,6 +35,9 @@
             <div class="control">
               <%= form.text_field :title, class: "input", placeholder: "Title" %>
             </div>
+            <% if article.errors.any? %>
+              <p class="help is-danger">This title is invalid</p>
+            <% end %>
           </div>
 
       <div class="field">
