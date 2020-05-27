@@ -111,7 +111,7 @@ GEM
     pry-rails (0.3.9)
       pry (>= 0.10.4)
     public_suffix (4.0.4)
-    puma (4.3.3)
+    puma (4.3.5)
       nio4r (~> 2.0)
     rack (2.2.2)
     rack-proxy (0.6.5)
@@ -216,8 +216,13 @@ DEPENDENCIES
   pry
   pry-nav
   pry-rails
+<<<<<<< HEAD
   puma (~> 4.1)
   rails (~> 6.0.3)
+=======
+  puma (~> 4.3)
+  rails (~> 6.0.2, >= 6.0.2.2)
+>>>>>>> 4b743ce7f5fd3e1cd932110cfe1ecfc09ec94b9b
   sass-rails (>= 6)
   selenium-webdriver
   spring
