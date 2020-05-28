@@ -1,12 +1,18 @@
 class CommentsController < ApplicationController
 
   def create
-    @comment = Article.find
+    article = Article.find(params[:article_id])
+
+    comment = article.comments.build(comment_params)
+
+    comment.save
+    redirect_to article
   end
 
+  private
 
-
-  def article_params
-    params.require(:article).permit(:title, :body)
+  def comment_params
+    params.require(:comment).permit(:commenter, :body)
   end
+
 end
