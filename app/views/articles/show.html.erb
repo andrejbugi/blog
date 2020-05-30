@@ -9,9 +9,9 @@
 
     <%= render @article, show: true %>
 
-    <%= render @article.comments %>
+    <%= render @comments %>
 
-    <%= render 'comments/form', article: @article, comment: @comment.build %>
+    <%= render 'comments/form', article: @article, comment: @comment %>
 
   </div>
 </div>

@@ -5,8 +5,8 @@ class ArticlesController < ApplicationController
 
   def show
     @article = Article.find(params[:id])
-    @comment = @article.comments.order(id: :desc)
-
+    @comments = @article.comments.order(id: :desc)
+    @comment = Comment.new
   end
 
   def new
