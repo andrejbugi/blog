@@ -15,7 +15,15 @@ class CommentsController < ApplicationController
 
 
     redirect_to article_path(params[:article_id])
-    # redirect_to comment.article 
+    # redirect_to comment.article
+  end
+
+  def edit
+    @comment = Comment.find(params[:id])
+
+    # @article = @comment.article
+
+    @article = Article.find(params[:article_id])
   end
 
   private
