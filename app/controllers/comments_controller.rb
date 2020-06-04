@@ -3,10 +3,18 @@ class CommentsController < ApplicationController
   def create
     article = Article.find(params[:article_id])
 
+
     comment = article.comments.build(comment_params)
 
-    comment.save
-    redirect_to article
+    if comment.save
+      redirect_to article
+    else
+      @article = Article.find(params[:article_id])
+      @comments = @article.comments
+      @comment = comment
+
+      render 'articles/show'
+    end
   end
 
   def destroy
@@ -24,6 +32,17 @@ class CommentsController < ApplicationController
 
     # @article = @comment.article
     @article = Article.find(params[:article_id])
+  end
+
+  def update
+    @comment = Comment.find(params[:id])
+    @article =  @comment.article
+
+    if @comment.update comment_params
+      redirect_to @article
+    else
+      render :edit
+    end
   end
 
   private
