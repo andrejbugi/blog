@@ -21,8 +21,8 @@ class CommentsController < ApplicationController
   def edit
     @comment = Comment.find(params[:id])
 
-    # @article = @comment.article
 
+    # @article = @comment.article
     @article = Article.find(params[:article_id])
   end
 

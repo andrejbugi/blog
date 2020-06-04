@@ -15,11 +15,17 @@
         <nav class="level">
           <div class="level-left">
             <div class="level-item">
-              <%= form.submit "Comment", class: "button is-info" %>
+              <%= form.submit submit_name, class: "button is-info" %>
             </div>
+            <% if local_assigns[:edit] %>
+              <div class="level-item">
+                <%= link_to "Cancel", article_path(article), class: "button is-link" %>
+              </div>
+            <% end %>
           </div>
         </nav>
       <% end %>
     </div>
   </article>
 </div>
+
