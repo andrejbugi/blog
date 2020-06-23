@@ -1,0 +1,14 @@
+<div class="container">
+  <div class="columns is-multiline">
+    <% flash.each do |name, msg| %>
+
+    <div class="column is-6 is-offset-3">
+      <div class= "notification is-<%= name %>">
+        <button class="delete"></button>
+        <%= msg %>
+      </div>
+    </div>
+
+    <% end %>
+  </div>
+</div>
