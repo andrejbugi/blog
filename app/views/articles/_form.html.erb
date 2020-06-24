@@ -1,6 +1,11 @@
-
 <div class="container">
   <div class="columns is-multiline">
+    <div class="column is-6 is-offset-3">
+      <div class="content is-size-3">
+        <h1><%= heading %></h1>
+      </div>
+    </div>
+
     <% if article.errors.any? %>
       <div class="column is-6 is-offset-3">
         <article class="message is-danger">
@@ -16,14 +21,6 @@
         </article>
       </div>
     <% end %>
-
-
-    <div class="column is-6 is-offset-3">
-      <div class="content is-size-3">
-        <h1><%= heading %></h1>
-      </div>
-    </div>
-
 
     <div class="column is-6 is-offset-3">
       <%= form_with model: article, local: true do |form| %>
