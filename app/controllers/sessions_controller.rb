@@ -1,11 +1,13 @@
 class SessionsController < ApplicationController
   def new
-    logged_in_notice if logged_in?
+    session_notice('warning', 'Already logged in!') if logged_in?
+
+    @user = User.new
   end
 
   def create
     user = User.find_by(email: params[:session][:email].downcase)
-    
+
     if user&.authenticate(params[:session][:password])
       log_in(user)
       flash[:success] = 'Succesfully logged in'
