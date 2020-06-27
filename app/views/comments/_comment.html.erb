@@ -3,12 +3,13 @@
     <div class="media-content">
       <div class="content">
         <p>
-          <strong><%= comment.commenter%></strong> <small><%= time_ago_in_words(comment.created_at) %> ago </small>
+          <strong><%= comment.user.name %></strong> <small><%= time_ago_in_words(comment.created_at) %> ago </small>
           <br>
           <%= comment.body %>
         </p>
       </div>
       <nav class="level is-mobile">
+      <% if equal_with_current_user?(comment.user) %>
         <div class="level-left">
           <%= link_to edit_article_comment_path(comment.article, comment), class: "level-item" do  %>
             <span class="icon is-small"><i class="fas fa-edit"></i></span>
@@ -19,6 +20,7 @@
             <span class="icon is-small"><i class="far fa-trash-alt"></i></i></span>
           <% end %>
         </div>
+      <% end %>
       </nav>
     </div>
   </article>
