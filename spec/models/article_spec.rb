@@ -21,7 +21,7 @@ RSpec.describe Article do
   describe 'validations' do
     it { is_expected.to validate_presence_of(:title) }
     it { is_expected.to validate_length_of(:title).is_at_least(Article::MINIMUM_TITLE_LENGTH) }
-
+    it { is_expected.to validate_length_of(:title).is_at_most(Article::MAXIMUM_TITLE_LENGTH) }
   end
 
 end

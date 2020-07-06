@@ -1,8 +1,8 @@
 class User < ApplicationRecord
-  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
   MAXIMUM_NAME_LENGTH = 255
   MAXIMUM_EMAIL_LENGTH = 50
   MINIMUM_PASSWORD_LENGTH = 6
+  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
 
   has_secure_password
 

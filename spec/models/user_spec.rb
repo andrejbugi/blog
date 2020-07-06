@@ -3,9 +3,9 @@ require 'rails_helper'
 RSpec.describe User do
   context 'when saving' do
     it 'transforms email to lower case' do
-      john = create(:user, email: "TEST@TEST.COM")
+      john = create(:user, email: 'TESTING@TEST.COM')
 
-      expect(john.email).to eq 'test@test.com'
+      expect(john.email).to eq 'testing@test.com'
     end
   end
 
@@ -18,18 +18,14 @@ RSpec.describe User do
       let(:comments_count) { 1 }
       let(:user) { create(:user) }
 
-      it 'destroys articles' do
-        # article = create(:article)
-
-        create_list(:article, articles_count, user: user)
+      it 'destroys comments' do
+        create_list(:comment, comments_count, user: user)
 
         expect { user.destroy }.to change { Comment.count }.by(-comments_count)
       end
 
-      it 'destroys comments' do
-        # user = create(:user)
-        
-        create_list(:comment, comments_count, user: user)
+      it 'destroys articles' do
+        create_list(:article, articles_count, user: user)
 
         expect { user.destroy }.to change { Article.count }.by(-articles_count)
       end
