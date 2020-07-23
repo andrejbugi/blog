@@ -24,7 +24,7 @@ class CommentsController < ApplicationController
     comment = Comment.find(params[:id])
 
     if logged_in?
-      session_notice(:danger, 'Wrong User!') unless equal_with_current_user?(@comment.user)
+      session_notice(:danger, 'Wrong User') unless equal_with_current_user?(@comment.user)
     end
 
     comment.destroy

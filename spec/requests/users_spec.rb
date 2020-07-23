@@ -119,6 +119,8 @@ RSpec.describe "Users" do
           }
         }
 
+        post '/login', post_params
+
         get "/articles/#{article.id}/edit"
 
         expect(flash[:danger]).to eq 'Wrong User'
