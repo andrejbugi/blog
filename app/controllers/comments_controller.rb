@@ -8,6 +8,10 @@ class CommentsController < ApplicationController
   end
 
   def create
+    unless logged_in?
+      session_notice(:danger, 'You must be logged in!', login_path) and return
+    end
+
     @article = Article.find(params[:article_id])
     @comment = @article.comments.build(comment_params)
     @comment.user = current_user
@@ -20,22 +24,26 @@ class CommentsController < ApplicationController
   end
 
   def destroy
-    session_notice(:danger, 'You must be logged in!', login_path) unless logged_in?
-    comment = Comment.find(params[:id])
-
-    if logged_in?
-      session_notice(:danger, 'Wrong User') unless equal_with_current_user?(@comment.user)
+    unless logged_in?
+      session_notice(:danger, 'You must be logged in!', login_path) and return
     end
 
-    comment.destroy
+    comment = Comment.find(params[:id])
+    article = comment.article
 
-
-    redirect_to article_path(params[:article_id])
-    # redirect_to comment.article
+    if equal_with_current_user?(article.user)
+      comment.destroy
+      redirect_to article
+    else
+      session_notice(:danger, 'Wrong User!')
+    end
   end
 
   def edit
-    session_notice(:danger, 'You must be logged in!', login_path) unless logged_in?
+    unless logged_in?
+      session_notice(:danger, 'You must be logged in!', login_path) and return
+    end
+
     @comment = Comment.find(params[:id])
 
     if logged_in?
@@ -48,13 +56,21 @@ class CommentsController < ApplicationController
   end
 
   def update
+    unless logged_in?
+      session_notice(:danger, 'You must be logged in!', login_path) and return
+    end
+
     @comment = Comment.find(params[:id])
     @article = @comment.article
 
-    if @comment.update comment_params
-      redirect_to @article
+    if equal_with_current_user?(@comment.user)
+      if @comment.update comment_params
+        redirect_to @article
+      else
+        render :edit
+      end
     else
-      render :edit
+      session_notice(:danger, 'Wrong User!', login_path)
     end
   end
 
