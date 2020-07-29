@@ -1,13 +1,12 @@
 class UsersController < ApplicationController
-  def new
-    session_notice('warning', 'Already logged in!') if logged_in?
+  skip_before_action :require_login, except: :show
 
+  def new
     @user = User.new
   end
 
   def create
     @user = User.new(user_params)
-
 
     if @user.save
       log_in(@user)
@@ -17,17 +16,9 @@ class UsersController < ApplicationController
     end
   end
 
-
   def show
     @user = User.find(params[:id])
   end
-
-  # def articles
-  #   @articles = current_user.articles
-
-  #   render 'articles/index'
-  # end
-
 
   private
 
