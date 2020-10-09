@@ -1,10 +1,45 @@
-
 <div class="container">
   <div class="columns is-multiline">
-    <div class="column is-6 is-offset-3">
+    <div class="column is-6">
       <div class="content is-size-3">
-        <h3><%= @user.name %></h3>
-        <p><%= @user.email %></p>
+        <div class="box">
+          <article class="media">
+            <div class="media-left">
+              <figure class="image is-96x96">
+                <% if @user.profile_picture.attached? %>
+                  <img src="<%=(url_for(@user.profile_picture))%>" alt="Image">
+                <% end %>
+              </figure>
+            </div>
+            <div class="media-content">
+              <div class="content">
+                <p>
+                  <strong><%= @user.name %></strong><br> <small><%= @user.email %></small>
+                  <br>
+                </p>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="column is-5 is-offset-1">
+      <div class="content is-size-5">
+        <% @user.articles.each do |article| %>
+          <div class="card">
+            <div class="card-content">
+              <p class="title">
+                <%= article.title %>
+              </p>
+              <p class="subtitle">
+                <%= article.body %>
+              </p>
+            </div>
+            <footer class="card-footer">
+            </footer>
+          </div>
+        <% end %>
       </div>
     </div>
   </div>

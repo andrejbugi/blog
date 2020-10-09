@@ -12,17 +12,22 @@
 
     <div id="navbarBasicExample" class="navbar-menu">
       <div class="navbar-end">
+        <% if logged_in? %>
         <div class="navbar-item">
-          <div class="buttons">
-            <% if logged_in? %>
-              <%= link_to "New Article", new_article_path, class: "button is-primary has-text-weight-bold" %>
-              <%= link_to "Log Out", logout_path, method: :delete, class: "button is-primary has-text-weight-bold" %>
-            <% else %>
-              <%= link_to "Log In", login_path, class: "button is-primary has-text-weight-bold" %>
-              <%= link_to "Sign Up", signup_path, class: "button is-primary has-text-weight-bold" %>
+          <figure class="image is-36x36">
+            <%= link_to user_path(current_user.id) do %>
+              <%= image_tag(current_user.profile_picture) if current_user.profile_picture.attached? %>
             <% end %>
+          </figure>
+          <div class="buttons">
+            <%= link_to "New Article", new_article_path, class: "button is-primary has-text-weight-bold" %>
+            <%= link_to "Log Out", logout_path, method: :delete, class: "button is-primary has-text-weight-bold" %>
+        <% else %>
+            <%= link_to "Log In", login_path, class: "button is-primary has-text-weight-bold" %>
+            <%= link_to "Sign Up", signup_path, class: "button is-primary has-text-weight-bold" %>
           </div>
         </div>
+        <% end %>
       </div>
     </div>
   </nav>
