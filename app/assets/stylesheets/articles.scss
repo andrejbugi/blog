@@ -7,18 +7,91 @@
   border-color: #f14668;
 }
 
-.navbar-item .buttons {
+html {
+  background-color: chocolate;
+}
+
+.body {
+  background-color: chocolate;
+}
+
+.navbar {
+  background-color: chocolate;
+  width: 100%;
+  padding: 15px;
+  margin: 10px;
+}
+
+.navbar-item .buttons .button {
   margin-left: 0.5rem;
   padding-left: 0.5rem;
 }
 
+.navbar-menu {
+  background-color: chocolate;
+}
+
 .navbar-item img {
-  max-height: 2.5rem;
-  border-radius: 10px;
+  max-height: 5rem;
+  border-radius: 20px;
   margin-right: 2px;
   padding-right: 5px;
   margin-left: 2px;
   padding-left: 5px;
   border-color: grey;
   border-width: 0.5rem;
+}
+
+.content figure img {
+  border-radius: 20px;
+}
+
+#time-posted {
+  padding-left: 58%;
+  padding-right: 3%;
+  padding-top: 50px;
+  padding-bottom: 5px;
+}
+
+.content .title {
+  width: 50%;
+}
+
+.card {
+  margin: 4px;
+  padding: 4px;
+  background-color: antiquewhite;
+  border-radius: 15px;
+  border: 2px solid black;
+}
+
+.section {
+  background-color: chocolate;
+}
+
+.input {
+  background-color: antiquewhite;
+}
+
+.textarea {
+  background-color: antiquewhite;
+}
+
+.box {
+  background-color: rgba(210, 105, 30, 0);
+}
+
+
+.footer {
+  background-color: black;
+}
+
+.fas {
+  color: black;
+}
+
+.button {
+  color: rgba(255, 255, 255, 0.801);
+  background-color: grey;
+  border-color: grey;
 }

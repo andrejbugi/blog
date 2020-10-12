@@ -9,7 +9,7 @@ RSpec.describe "HomePages" do
   end
 
   it 'shows the home link' do
-    expecting = page.has_link?('My Blog')
+    expecting = page.has_link?('Home')
 
     expect(expecting).to be true
   end
