@@ -1,7 +1,7 @@
 <div class="container">
   <nav class="navbar" role="navigation" aria-label="main navigation">
     <div class="navbar-brand">
-      <%= link_to "My Blog", root_path, class: "navbar-item is-size-1"%>
+      <%= link_to "Home", root_path, class: "navbar-item is-size-1"%>
 
       <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
         <span aria-hidden="true"></span>
@@ -12,22 +12,26 @@
 
     <div id="navbarBasicExample" class="navbar-menu">
       <div class="navbar-end">
-        <% if logged_in? %>
         <div class="navbar-item">
-          <figure class="image is-36x36">
-            <%= link_to user_path(current_user.id) do %>
-              <%= image_tag(current_user.profile_picture) if current_user.profile_picture.attached? %>
-            <% end %>
-          </figure>
           <div class="buttons">
-            <%= link_to "New Article", new_article_path, class: "button is-primary has-text-weight-bold" %>
-            <%= link_to "Log Out", logout_path, method: :delete, class: "button is-primary has-text-weight-bold" %>
+        <% if logged_in? %>
+            <%= link_to "New Article", new_article_path, class: "button has-text-weight-bold" %>
+            <%= link_to "Log Out", logout_path, method: :delete, class: "button has-text-weight-bold" %>
+            <figure class="image is-36x36">
+              <%= link_to user_path(current_user.id) do %>
+                <% if current_user.profile_picture.attached? %>
+                  <%= image_tag(current_user.profile_picture)%>
+                <% else %>
+                  <%= image_tag("default-avatar.png") %>
+                <% end %>
+              <% end %>
+            </figure>
         <% else %>
-            <%= link_to "Log In", login_path, class: "button is-primary has-text-weight-bold" %>
-            <%= link_to "Sign Up", signup_path, class: "button is-primary has-text-weight-bold" %>
+            <%= link_to "Log In", login_path, class: "button has-text-weight-bold" %>
+            <%= link_to "Sign Up", signup_path, class: "button has-text-weight-bold" %>
+        <% end %>
           </div>
         </div>
-        <% end %>
       </div>
     </div>
   </nav>

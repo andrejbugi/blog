@@ -6,12 +6,19 @@
 .field_with_errors input {
   border-color: #f14668;
 }
+
+.navbar-item .buttons {
+  margin-left: 0.5rem;
+  padding-left: 0.5rem;
+}
+
 .navbar-item img {
   max-height: 2.5rem;
-  margin-right: 10px;
-  padding-right: 10px;
-  border: 1px;
-  border-color: white;
-  border-width: 1px;
-  border-radius: 4px;
+  border-radius: 10px;
+  margin-right: 2px;
+  padding-right: 5px;
+  margin-left: 2px;
+  padding-left: 5px;
+  border-color: grey;
+  border-width: 0.5rem;
 }

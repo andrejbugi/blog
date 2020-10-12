@@ -8,17 +8,24 @@
               <figure class="image is-96x96">
                 <% if @user.profile_picture.attached? %>
                   <img src="<%=(url_for(@user.profile_picture))%>" alt="Image">
+                <% else %>
+                  <%= image_tag("default-avatar.png") %>
                 <% end %>
               </figure>
             </div>
             <div class="media-content">
               <div class="content">
                 <p>
-                  <strong><%= @user.name %></strong><br> <small><%= @user.email %></small>
-                  <br>
+                  <strong><%= @user.name %></strong> <br> <small><%= @user.email %></small><br>
                 </p>
               </div>
             </div>
+            <div class="media-right">
+              <%= link_to edit_user_path(@user.id), class: "level-item" do  %>
+                <span class="icon is-small"><i class="fas fa-edit"></i></span>
+              <% end %>
+            </div>
+
           </article>
         </div>
       </div>
@@ -26,7 +33,7 @@
 
     <div class="column is-5 is-offset-1">
       <div class="content is-size-5">
-        <% @user.articles.each do |article| %>
+        <% @user.articles.order(id: :desc).each do |article| %>
           <div class="card">
             <div class="card-content">
               <p class="title">
@@ -35,6 +42,7 @@
               <p class="subtitle">
                 <%= article.body %>
               </p>
+              <p id="time-posted"> <small> <%=time_ago_in_words(article.created_at).capitalize %> ago </small> </p>
             </div>
             <footer class="card-footer">
             </footer>
