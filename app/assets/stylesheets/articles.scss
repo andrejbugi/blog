@@ -95,3 +95,9 @@ html {
   background-color: grey;
   border-color: grey;
 }
+
+#conversation-body {
+  max-height: 400px;
+  overflow-y: auto;
+  margin-bottom: 2em;
+}

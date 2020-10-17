@@ -6,6 +6,8 @@ Rails.application.routes.draw do
     resources :comments
   end
 
+  resources :personal_messages, only: [:new, :create]
+  resources :conversations, only: [:index, :show]
 
   get '/signup', to: 'users#new'
   resources :users, except: :new

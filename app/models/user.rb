@@ -10,6 +10,10 @@ class User < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_one_attached :profile_picture
 
+  has_many :authored_conversations, class_name: 'Conversation', foreign_key: 'author_id'
+  has_many :received_conversations, class_name: 'Conversation', foreign_key: 'received_id'
+  has_many :personal_messages, dependent: :destroy
+
   before_save :email_to_downcase
 
   validates :name, presence: true, length: { maximum: MAXIMUM_NAME_LENGTH }
