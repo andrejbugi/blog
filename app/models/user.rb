@@ -23,9 +23,19 @@ class User < ApplicationRecord
                     uniqueness: true
   validates :password, presence: true, length: { minimum: MINIMUM_PASSWORD_LENGTH }
 
+  validates :age, presence: true
+
+  validate :at_least_18
+
   private
 
   def email_to_downcase
     self.email = email.downcase
+  end
+
+  def at_least_18
+    if self.age < 18
+      errors.add(:age, '- you must be 18 or older.')
+    end
   end
 end

@@ -62,6 +62,14 @@
           </div>
         </div>
 
+        <div class="field">
+          <%= form.label :age, class: "label" %>
+
+          <div class="control">
+            <%= form.number_field :age, class: "input", placeholder: 'enter your age..' %>
+          </div>
+        </div>
+
         <div class="field is-grouped">
           <div class="control">
             <%= form.submit "Save", class: "button is-link" %>
