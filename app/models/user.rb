@@ -3,6 +3,7 @@ class User < ApplicationRecord
   MAXIMUM_EMAIL_LENGTH = 50
   MINIMUM_PASSWORD_LENGTH = 6
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
+  MINIMUM_AGE = 18
 
   has_secure_password
 
@@ -34,8 +35,6 @@ class User < ApplicationRecord
   end
 
   def at_least_18
-    if self.age < 18
-      errors.add(:age, '- you must be 18 or older.')
-    end
+    errors.add(:age, 'must be at least 18') if age < MINIMUM_AGE
   end
 end
