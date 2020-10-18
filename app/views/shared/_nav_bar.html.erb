@@ -14,9 +14,11 @@
       <div class="navbar-end">
         <div class="navbar-item">
           <div class="buttons">
-        <% if logged_in? %>
+          <% if logged_in? %>
             <%= link_to "New Article", new_article_path, class: "button has-text-weight-bold" %>
             <%= link_to "Log Out", logout_path, method: :delete, class: "button has-text-weight-bold" %>
+            <%= link_to 'Users', users_path, class: "button has-text-weight-bold" %>
+            <%= link_to 'Inbox', conversations_path, class: "button has-text-weight-bold" %>
             <figure class="image is-36x36">
               <%= link_to user_path(current_user.id) do %>
                 <% if current_user.profile_picture.attached? %>
@@ -26,12 +28,10 @@
                 <% end %>
               <% end %>
             </figure>
-        <% else %>
+          <% else %>
             <%= link_to "Log In", login_path, class: "button has-text-weight-bold" %>
             <%= link_to "Sign Up", signup_path, class: "button has-text-weight-bold" %>
-        <% end %>
-        <%= link_to 'Users', users_path %>
-        <%= link_to 'Inbox', conversations_path %>
+          <% end %>
           </div>
         </div>
       </div>

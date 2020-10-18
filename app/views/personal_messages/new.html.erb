@@ -1,10 +1,21 @@
-<h1>New message to <%= @receiver.name %></h1>
+<div class="column is-4 is-offset-3">
+  <div class="card">
+    <header class="card-header">
+      <p class="card-header-title">
+        New message to <%= @receiver.name %>
+      <br></p>
+    </header>
+    <div class="card-content">
+      <div class="content">
+        <%= form_for @personal_message do |f| %>
+          <%= hidden_field_tag 'receiver_id', @receiver.id %>
 
-<%= form_for @personal_message do |f| %>
-  <%= hidden_field_tag 'receiver_id', @receiver.id %>
+          <%= f.label :new_message, class: "label" %>
+          <%= f.text_area :body, placeholder: 'Aa', size: "28x2" %>
 
-  <%= f.label :body %>
-  <%= f.text_area :body %>
-
-  <%= f.submit %>
-<% end %>
+          <%= f.submit "Send!" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
