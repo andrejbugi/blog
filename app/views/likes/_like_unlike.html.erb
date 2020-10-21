@@ -1,0 +1,6 @@
+<% pre_like = @article.likes.find { |like| like.user_id == current_user.id } %>
+<% if pre_like %>
+  <%= link_to 'Unlike', article_like_path(@article, pre_like), method: :delete, class: "card-footer-item" %>
+<% else %>
+  <%= link_to 'Like', article_likes_path(@article), method: :post, class: "card-footer-item"  %>
+<% end %>

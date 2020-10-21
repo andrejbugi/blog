@@ -45,6 +45,7 @@
               <p id="time-posted"> <small> <%=time_ago_in_words(article.created_at).capitalize %> ago </small> </p>
             </div>
             <footer class="card-footer">
+            <p><%= article.likes.count %> <%= (article.likes.count) == 1 ? 'Like' : 'Likes' %></p>
             </footer>
           </div>
         <% end %>
