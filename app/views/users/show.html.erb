@@ -1,11 +1,11 @@
 <div class="container">
   <div class="columns is-multiline">
-    <div class="column is-6">
+    <div class="column is-8 is-offset-2">
       <div class="content is-size-3">
         <div class="box">
           <article class="media">
             <div class="media-left">
-              <figure class="image is-96x96">
+              <figure class="image is-128x128">
                 <% if @user.profile_picture.attached? %>
                   <img src="<%=(url_for(@user.profile_picture))%>" alt="Image">
                 <% else %>
@@ -14,42 +14,24 @@
               </figure>
             </div>
             <div class="media-content">
-              <div class="content">
-                <p>
-                  <strong><%= @user.name %></strong> <br> <small><%= @user.email %></small><br>
-                </p>
+              <div class="content is-size-3">
+                <p><strong><%= @user.name %></strong></p>
+              </div>
+              <div class="content is-size-5">
+              <p><small><%= @user.email %></small></p>
               </div>
             </div>
             <div class="media-right">
-              <%= link_to edit_user_path(@user.id), class: "level-item" do  %>
-                <span class="icon is-small"><i class="fas fa-edit"></i></span>
-              <% end %>
+              <div class="content is-size-5">
+              <p><small><%= link_to 'Edit profile', edit_user_path(@user.id), class: "level-item" %></small></p>
+                <%# <span class="icon is-small"><i class="fas fa-edit"></i></span> %>
+              <%# <% end %>
+              </div>
             </div>
-
           </article>
         </div>
       </div>
     </div>
-
-    <div class="column is-5 is-offset-1">
-      <div class="content is-size-5">
-        <% @user.articles.order(id: :desc).each do |article| %>
-          <div class="card">
-            <div class="card-content">
-              <p class="title">
-                <%= article.title %>
-              </p>
-              <p class="subtitle">
-                <%= article.body %>
-              </p>
-              <p id="time-posted"> <small> <%=time_ago_in_words(article.created_at).capitalize %> ago </small> </p>
-            </div>
-            <footer class="card-footer">
-            <p><%= article.likes.count %> <%= (article.likes.count) == 1 ? 'Like' : 'Likes' %></p>
-            </footer>
-          </div>
-        <% end %>
-      </div>
-    </div>
+    <%= render @user.articles %>
   </div>
 </div>
