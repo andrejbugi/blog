@@ -1,15 +1,15 @@
 <div class="column is-6 is-offset-3">
   <div class="card">
-    <% unless local_assigns[:show] %>
-      <header class="card-header">
-        <p class="card-header-title">
-          <%= article.title %>
-        </p>
-      </header>
-    <% end %>
     <div class="card-content">
       <div class="content is-size-5">
-        <p><%= article.body %></p>
+      <% unless local_assigns[:show] %>
+        <p class="title">
+          <%= article.title %>
+        </p>
+      <% end %>
+        <p class="subtitle">
+          <%= article.body %>
+        </p>
       </div>
     </div>
     <footer class="card-footer">
