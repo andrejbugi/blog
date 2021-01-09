@@ -11,6 +11,8 @@
           <%= article.body %>
         </p>
       </div>
+    <time><p><small>Posted <%=time_ago_in_words(article.created_at).capitalize %> ago</small></p></time>
+    <time><p><small><%= article.likes.count %> <%= (article.likes.count) == 1 ? 'Like' : 'Likes' %></small></p></time>
     </div>
     <footer class="card-footer">
       <% if local_assigns[:show] %>
@@ -24,6 +26,7 @@
 
       <% if local_assigns[:show] && logged_in? %>
         <%= link_to "Comment", new_article_comment_path(article), class: "card-footer-item" %>
+        <%= render 'likes/like_unlike', class: "card-footer-item" %>
       <% end %>
 
       <% if logged_in? && equal_with_current_user?(article.user) %>
